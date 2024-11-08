@@ -60,7 +60,7 @@ public class ImagemMetadadosServiceImpl implements ImagemMetadadosService{
 		return imagemMetadados;
 	}
 	
-	public List<Map<String,Object>> getByPalavra(String palavra){
+	public List<ImagemMetadadosDTO> getByPalavraNoContextoGeral(String palavra){
 		List<Map<String,Object>> listaDeImagens = this.IMAGEM_METADADOS_REPOSITORY.listByPalavra(palavra);
 		
 		listaDeImagens.stream()
@@ -68,7 +68,7 @@ public class ImagemMetadadosServiceImpl implements ImagemMetadadosService{
 				lista.entrySet().forEach(valor -> System.out.println("valores: "+ valor.getValue()));
 			});
 		
-		return listaDeImagens;
+		return imgDTO.listToDto(listaDeImagens);
 	}
 	
 	public List<ImagemMetadadosDTO> getByTitulo(String titulo){
@@ -79,9 +79,9 @@ public class ImagemMetadadosServiceImpl implements ImagemMetadadosService{
 	}
 
 	@Override
-	public List<Map<String, Object>> getByTag(String tag) {
+	public List<ImagemMetadadosDTO> getByTag(String tag) {
 		List<Map<String,Object>> listaDeImagens = this.IMAGEM_METADADOS_REPOSITORY.listByTag(tag);
-		return listaDeImagens;
+		return imgDTO.listToDto(listaDeImagens);
 	}
 
 }

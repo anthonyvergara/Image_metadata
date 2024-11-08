@@ -13,8 +13,7 @@ import com.metadados.model.ImagemMetadados;
 public interface ImagemMetadadosRepository extends JpaRepository<ImagemMetadados, Long>{
 	
 	@Query(value = """ 
-			SELECT img.id, meta.* 
-			FROM imagem img
+			SELECT * FROM imagem img
 				INNER JOIN imagem_metadados meta ON img.id = meta.imagem_id
 					WHERE meta.titulo LIKE %:titulo%
 			""", nativeQuery = true)

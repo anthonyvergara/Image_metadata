@@ -47,15 +47,15 @@ public class ImagemController {
 	}
 	
 	@GetMapping(value = "/tag/{tag}")
-	public ResponseEntity<List<Map<String,Object>>> getByTag(@PathVariable("tag") String tag){
+	public ResponseEntity<List<ImagemMetadadosDTO>> getByTag(@PathVariable("tag") String tag){
 		
-		return new ResponseEntity<List<Map<String,Object>>>(this.IMAGEM_METADADOS_SERVICE.getByTag(tag),HttpStatus.OK);
+		return new ResponseEntity<List<ImagemMetadadosDTO>>(this.IMAGEM_METADADOS_SERVICE.getByTag(tag),HttpStatus.OK);
 		
 	}
 	
 	@GetMapping(value = "/{palavra}")
-	public ResponseEntity<List<Map<String,Object>>> getByPalavra(@PathVariable("palavra") String palavra){
-		return new ResponseEntity<List<Map<String,Object>>>(this.IMAGEM_METADADOS_SERVICE.getByPalavra(palavra),HttpStatus.OK);
+	public ResponseEntity<List<ImagemMetadadosDTO>> getByPalavra(@PathVariable("palavra") String palavra){
+		return new ResponseEntity<List<ImagemMetadadosDTO>>(this.IMAGEM_METADADOS_SERVICE.getByPalavraNoContextoGeral(palavra),HttpStatus.OK);
 	}
 
 }

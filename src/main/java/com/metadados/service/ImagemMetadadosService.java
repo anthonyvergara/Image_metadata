@@ -13,7 +13,7 @@ public interface ImagemMetadadosService {
 	
 	public ImagemMetadados save (MultipartFile arquivo, String tag, String titulo, Imagem imagem);
 	public List<ImagemMetadadosDTO> getByTitulo(String titulo);
-	public List<Map<String,Object>> getByTag(String tag);
-	public List<Map<String,Object>> getByPalavra(String palavra);
+	public List<ImagemMetadadosDTO> getByTag(String tag);
+	public List<ImagemMetadadosDTO> getByPalavraNoContextoGeral(String palavra);
 
 }

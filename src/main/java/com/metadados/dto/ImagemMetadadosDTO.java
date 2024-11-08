@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
+import com.metadados.model.Imagem;
 import com.metadados.model.ImagemMetadados;
 
 import lombok.AllArgsConstructor;
@@ -23,6 +24,7 @@ public class ImagemMetadadosDTO{
 	private String titulo;
 	private Long tamanho;
 	private Long imagem_id;
+	private byte[] imagem;
 	
 	public List<ImagemMetadadosDTO> listToDto(List<Map<String,Object>> listaImagens){
 		List<ImagemMetadadosDTO> imagensDto = new ArrayList<ImagemMetadadosDTO>();
@@ -33,6 +35,7 @@ public class ImagemMetadadosDTO{
 			dto.setTitulo((String) mapImagens.get("titulo"));
 			dto.setTamanho((Long) mapImagens.get("tamanho"));
 			dto.setImagem_id((Long)mapImagens.get("imagem_id"));
+			dto.setImagem((byte[])mapImagens.get("imagem"));
 			
 			imagensDto.add(dto);
 		}
