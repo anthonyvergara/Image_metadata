@@ -60,8 +60,8 @@ public class ImagemMetadadosServiceImpl implements ImagemMetadadosService{
 		return imagemMetadados;
 	}
 	
-		public List<ImagemMetadados> getByTitulo(String titulo){
-			List<ImagemMetadados> listaDeImagens = this.IMAGEM_METADADOS_REPOSITORY.listByTitulo(titulo);
+		public List<Map<String,Object>> getByTitulo(String titulo){
+			List<Map<String,Object>> listaDeImagens = this.IMAGEM_METADADOS_REPOSITORY.listByTitulo(titulo);
 			
 			
 			return listaDeImagens;

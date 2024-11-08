@@ -18,5 +18,5 @@ public interface ImagemMetadadosRepository extends JpaRepository<ImagemMetadados
 				INNER JOIN imagem_metadados meta ON img.id = meta.imagem_id
 					WHERE meta.titulo LIKE %:titulo%
 			""", nativeQuery = true)
-		List<ImagemMetadados> listByTitulo(@Param("titulo") String titulo);
+		List<Map<String,Object>> listByTitulo(@Param("titulo") String titulo);
 }

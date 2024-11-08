@@ -40,9 +40,9 @@ public class ImagemController {
 	}
 	
 	@GetMapping(value = "/titulo/{titulo}")
-	public ResponseEntity<List<ImagemMetadados>> getByTitulo(@PathVariable("titulo") String titulo){
+	public ResponseEntity<List<Map<String,Object>>> getByTitulo(@PathVariable("titulo") String titulo){
 		
-		return new ResponseEntity<List<ImagemMetadados>>(this.IMAGEM_METADADOS_SERVICE.getByTitulo(titulo),HttpStatus.OK);
+		return new ResponseEntity<List<Map<String,Object>>>(this.IMAGEM_METADADOS_SERVICE.getByTitulo(titulo),HttpStatus.OK);
 		
 	}
 
