@@ -3,6 +3,7 @@ package com.metadados.serviceImpl;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.tika.Tika;
@@ -59,8 +60,8 @@ public class ImagemMetadadosServiceImpl implements ImagemMetadadosService{
 		return imagemMetadados;
 	}
 	
-		public Map<String,ImagemMetadados> getByTitulo(String titulo){
-			Map<String,ImagemMetadados> listaDeImagens = this.IMAGEM_METADADOS_REPOSITORY.listByTitulo(titulo);
+		public List<ImagemMetadados> getByTitulo(String titulo){
+			List<ImagemMetadados> listaDeImagens = this.IMAGEM_METADADOS_REPOSITORY.listByTitulo(titulo);
 			
 			
 			return listaDeImagens;
