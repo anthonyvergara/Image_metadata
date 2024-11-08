@@ -12,6 +12,8 @@ import com.metadados.model.ImagemMetadados;
 public interface ImagemMetadadosService {
 	
 	public ImagemMetadados save (MultipartFile arquivo, String tag, String titulo, Imagem imagem);
-	public List<Map<String,Object>> getByTitulo(String titulo);
+	public List<ImagemMetadadosDTO> getByTitulo(String titulo);
+	public List<Map<String,Object>> getByTag(String tag);
+	public List<Map<String,Object>> getByPalavra(String palavra);
 
 }

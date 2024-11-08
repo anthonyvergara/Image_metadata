@@ -1,6 +1,7 @@
 package com.metadados.dto;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,29 +21,22 @@ public class ImagemMetadadosDTO{
 	
 	private String tag;
 	private String titulo;
-	private String nome;
-	private String tamanho;
-	private String autor;
-	private String tipo;
-	private String localizacao;
+	private Long tamanho;
 	private Long imagem_id;
 	
-	public ImagemMetadadosDTO convertToDto(ImagemMetadados imagem) {
+	public List<ImagemMetadadosDTO> listToDto(List<Map<String,Object>> listaImagens){
+		List<ImagemMetadadosDTO> imagensDto = new ArrayList<ImagemMetadadosDTO>();
 		
-		BeanUtils.copyProperties(imagem, this);
-		
-		return this;
-	}
-	
-	public Map<String,ImagemMetadadosDTO> listToDto(Map<String,ImagemMetadados> imagens){
-		Map<String,ImagemMetadadosDTO> listaImagens = new HashMap<>();
-		
-		for(Map.Entry<String,ImagemMetadados> img : imagens.entrySet()) {
-			ImagemMetadadosDTO imagemMetadados = new ImagemMetadadosDTO();
+		for(Map<String,Object> mapImagens : listaImagens) {
+			ImagemMetadadosDTO dto = new ImagemMetadadosDTO();
+			dto.setTag((String) mapImagens.get("tag"));
+			dto.setTitulo((String) mapImagens.get("titulo"));
+			dto.setTamanho((Long) mapImagens.get("tamanho"));
+			dto.setImagem_id((Long)mapImagens.get("imagem_id"));
 			
-			listaImagens.put(img.getKey(), imagemMetadados.convertToDto(img.getValue()));
+			imagensDto.add(dto);
 		}
 		
-		return listaImagens;
+		return imagensDto;
 	}
 }

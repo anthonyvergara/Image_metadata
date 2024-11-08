@@ -60,11 +60,28 @@ public class ImagemMetadadosServiceImpl implements ImagemMetadadosService{
 		return imagemMetadados;
 	}
 	
-		public List<Map<String,Object>> getByTitulo(String titulo){
-			List<Map<String,Object>> listaDeImagens = this.IMAGEM_METADADOS_REPOSITORY.listByTitulo(titulo);
-			
-			
-			return listaDeImagens;
-		}
+	public List<Map<String,Object>> getByPalavra(String palavra){
+		List<Map<String,Object>> listaDeImagens = this.IMAGEM_METADADOS_REPOSITORY.listByPalavra(palavra);
+		
+		listaDeImagens.stream()
+			.forEach(lista -> {
+				lista.entrySet().forEach(valor -> System.out.println("valores: "+ valor.getValue()));
+			});
+		
+		return listaDeImagens;
+	}
+	
+	public List<ImagemMetadadosDTO> getByTitulo(String titulo){
+		List<Map<String,Object>> listaDeImagens = this.IMAGEM_METADADOS_REPOSITORY.listByTitulo(titulo);
+		
+		
+		return imgDTO.listToDto(listaDeImagens);
+	}
+
+	@Override
+	public List<Map<String, Object>> getByTag(String tag) {
+		List<Map<String,Object>> listaDeImagens = this.IMAGEM_METADADOS_REPOSITORY.listByTag(tag);
+		return listaDeImagens;
+	}
 
 }
