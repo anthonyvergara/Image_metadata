@@ -6,11 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.tika.Tika;
-import org.apache.tika.metadata.Metadata;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.drew.imaging.ImageProcessingException;
 import com.metadados.model.Imagem;
 import com.metadados.model.ImagemMetadados;
 import com.metadados.repository.ImagemRepository;
@@ -31,7 +30,7 @@ public class ImagemServiceImpl implements ImagemService{
 	
 	@Transactional
 	@Override
-	public Imagem save(MultipartFile arquivo, String tag, String titulo) {
+	public Imagem save(MultipartFile arquivo, String tag, String titulo) throws ImageProcessingException {
 		
 		Imagem imagem = new Imagem();
 		try {

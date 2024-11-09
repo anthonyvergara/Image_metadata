@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.drew.imaging.ImageProcessingException;
 import com.metadados.dto.ImagemMetadadosDTO;
 import com.metadados.model.Imagem;
 import com.metadados.model.ImagemMetadados;
@@ -33,7 +34,7 @@ public class ImagemController {
 	
 	@PostMapping(value = "/tag/{tag}/titulo/{titulo}")
 	public ResponseEntity<Imagem> save(@RequestParam("file") MultipartFile arquivo, @PathVariable(value = "tag") String tag,
-																			@PathVariable(value = "titulo") String titulo){
+																			@PathVariable(value = "titulo") String titulo) throws ImageProcessingException{
 		
 		return new ResponseEntity<Imagem>(this.IMAGEM_SERVICE.save(arquivo, tag, titulo),HttpStatus.OK);
 		

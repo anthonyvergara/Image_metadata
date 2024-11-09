@@ -33,11 +33,20 @@ public class ImagemMetadados implements Serializable{
 	@Column(name = "titulo", nullable = true)  // Permite nulos
 	private String titulo;
 	
-	@Column(name = "autor", nullable = true)  // Permite nulos
-	private String autor;
+	@Column(name = "modelo", nullable = true)  // Permite nulos
+	private String modelo;
 	
-	@Column(name = "localizacao", nullable = true)  // Permite nulos
-	private String localizacao;
+	@Column(name = "latitude", nullable = true)  // Permite nulos
+	private String latitude;
+	
+	@Column(name = "longitude", nullable = true)  // Permite nulos
+	private String longitude;
+	
+	@Column(name = "altura", nullable = true)  // Permite nulos
+	private int altura;
+	
+	@Column(name = "largura", nullable = true)  // Permite nulos
+	private int largura;
 	
 	@Column(name = "data", nullable = true)  // Permite nulos
 	private LocalDateTime data;
