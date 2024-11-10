@@ -14,6 +14,7 @@ O sistema oferece funcionalidade de busca por palavra-chave, seja em contexto ge
 * Armazenamento de Imagens
 * Extração de Metadados
 * Consultas Otimizadas e Agrupamento de Dados
+* Realiza download das imagens encontradas.
 <br>
 
 ## TECNOLOGIAS
