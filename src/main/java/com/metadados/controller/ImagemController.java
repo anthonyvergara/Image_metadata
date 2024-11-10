@@ -1,5 +1,6 @@
 package com.metadados.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -48,7 +49,7 @@ public class ImagemController {
 	}
 	
 	@GetMapping(value = "/tag/{tag}")
-	public ResponseEntity<List<ImagemMetadadosDTO>> getByTag(@PathVariable("tag") String tag){
+	public ResponseEntity<List<ImagemMetadadosDTO>> getByTag(@PathVariable("tag") String tag) throws IOException{
 		
 		return new ResponseEntity<List<ImagemMetadadosDTO>>(this.IMAGEM_METADADOS_SERVICE.getByTag(tag),HttpStatus.OK);
 		

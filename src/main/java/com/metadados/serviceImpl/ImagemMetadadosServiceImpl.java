@@ -1,7 +1,11 @@
 package com.metadados.serviceImpl;
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
@@ -88,6 +92,17 @@ public class ImagemMetadadosServiceImpl implements ImagemMetadadosService{
 		return imagemMetadados;
 	}
 	
+	public void downloadImagens(List<ImagemMetadadosDTO> imagens) throws IOException{
+		
+		for(ImagemMetadadosDTO img : imagens) {
+			String caminho = "/Users/anthonyvergara/Pictures/up/novaimagem"+ img.getImagem_id() +".jpeg";
+			BufferedOutputStream buffer = new BufferedOutputStream(new FileOutputStream(caminho));
+			
+			buffer.write(img.getImagem());
+			buffer.flush();
+		}
+	}
+	
 	public List<ImagemMetadadosDTO> getByPalavraNoContextoGeral(String palavra){
 		List<Map<String,Object>> listaDeImagens = this.IMAGEM_METADADOS_REPOSITORY.listByPalavra(palavra);
 		
@@ -107,9 +122,14 @@ public class ImagemMetadadosServiceImpl implements ImagemMetadadosService{
 	}
 
 	@Override
-	public List<ImagemMetadadosDTO> getByTag(String tag) {
+	public List<ImagemMetadadosDTO> getByTag(String tag) throws IOException {
 		List<Map<String,Object>> listaDeImagens = this.IMAGEM_METADADOS_REPOSITORY.listByTag(tag);
-		return imgDTO.listToDto(listaDeImagens);
+		
+		List<ImagemMetadadosDTO> imagens = imgDTO.listToDto(listaDeImagens);
+		
+		this.downloadImagens(imagens);
+		
+		return imagens;
 	}
 
 }

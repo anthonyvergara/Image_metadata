@@ -15,7 +15,7 @@ public interface ImagemMetadadosService {
 	
 	public ImagemMetadados save (MultipartFile arquivo, String tag, String titulo, Imagem imagem) throws ImageProcessingException, IOException;
 	public List<ImagemMetadadosDTO> getByTitulo(String titulo);
-	public List<ImagemMetadadosDTO> getByTag(String tag);
+	public List<ImagemMetadadosDTO> getByTag(String tag) throws IOException;
 	public List<ImagemMetadadosDTO> getByPalavraNoContextoGeral(String palavra);
 
 }

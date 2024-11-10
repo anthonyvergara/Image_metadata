@@ -20,7 +20,7 @@ public interface ImagemMetadadosRepository extends JpaRepository<ImagemMetadados
 		List<Map<String,Object>> listByTitulo(@Param("titulo") String titulo);
 	
 	@Query(value = """ 
-			SELECT img.id, meta.* 
+			SELECT * 
 			FROM imagem img
 				INNER JOIN imagem_metadados meta ON img.id = meta.imagem_id
 					WHERE meta.tag LIKE %:tag%
@@ -28,7 +28,7 @@ public interface ImagemMetadadosRepository extends JpaRepository<ImagemMetadados
 		List<Map<String,Object>> listByTag(@Param("tag") String tag);
 	
 	@Query(value = """  
-			SELECT img.id, meta.* FROM imagem img
+			SELECT * FROM imagem img
 				INNER JOIN imagem_metadados meta ON img.id = meta.imagem_id
 						WHERE meta.autor LIKE %:palavra%
 						OR meta.localizacao LIKE %:palavra%
