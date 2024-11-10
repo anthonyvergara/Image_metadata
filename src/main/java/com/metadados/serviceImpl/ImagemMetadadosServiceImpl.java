@@ -6,6 +6,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 
@@ -64,9 +66,13 @@ public class ImagemMetadadosServiceImpl implements ImagemMetadadosService{
 	                String modeloDispositivo = exifDirectory.getString(0x0110); // Model
 	                imagemMetadados.setModelo(modeloDispositivo);
 
-	              //  datafoto = exifDirectory.getString(0x132);
+	                String datafoto = exifDirectory.getString(0x132);
 	                
-	               // imagemMetadados.setData(LocalDateTime.parse(datafoto));
+	                System.out.println(datafoto);
+	                
+	                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy:MM:dd HH:mm:ss");
+	                LocalDateTime data = LocalDateTime.parse(datafoto, formatter);
+	                imagemMetadados.setData(data);
 	            }
 
 	            if (directory instanceof GpsDirectory) {
@@ -92,7 +98,7 @@ public class ImagemMetadadosServiceImpl implements ImagemMetadadosService{
 		return imagemMetadados;
 	}
 	
-	public void downloadImagens(List<ImagemMetadadosDTO> imagens) throws IOException{
+	private void downloadImagens(List<ImagemMetadadosDTO> imagens) throws IOException{
 		
 		for(ImagemMetadadosDTO img : imagens) {
 			String caminho = "/Users/anthonyvergara/Pictures/up/novaimagem"+ img.getImagem_id() +".jpeg";
